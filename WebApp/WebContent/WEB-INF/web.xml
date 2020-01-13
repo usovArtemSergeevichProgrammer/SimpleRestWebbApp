@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>WebApp</display-name>
+  <welcome-file-list>
+    <welcome-file>home</welcome-file>
+  </welcome-file-list>
+  <filter>
+    <filter-name>LOG</filter-name>
+    <filter-class>filters.LoggingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>LOG</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <filter>
+    <filter-name>CHECK</filter-name>
+    <filter-class>filters.CheckAuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>CHECK</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  <servlet>
+    <servlet-name>helper</servlet-name>
+    <servlet-class>servlets.HelpServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>helper</servlet-name>
+    <url-pattern>/help</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>rand</servlet-name>
+    <servlet-class>servlets.RandomServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>rand</servlet-name>
+    <url-pattern>/random</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>test</servlet-name>
+    <servlet-class>servlets.TestServlet</servlet-class>
+    <init-param>
+      <description>Contact email</description>
+      <param-name>email1</param-name>
+      <param-value>alex@gmail.com</param-value>
+    </init-param>
+    <init-param>
+      <description>Contact email 2</description>
+      <param-name>email2</param-name>
+      <param-value>john@gmail.com</param-value>
+    </init-param>
+    <load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>test</servlet-name>
+    <url-pattern>/t</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>mathCor</servlet-name>
+    <servlet-class>servlets.MathCor</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>mathCor</servlet-name>
+    <url-pattern>/mathCor</url-pattern>
+  </servlet-mapping>
+</web-app>
